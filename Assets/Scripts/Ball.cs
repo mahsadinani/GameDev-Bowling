@@ -124,7 +124,19 @@ public class Ball : MonoBehaviour
 
     private void Victory()
     {
-        feedBack.text = "Victory! You knocked down 10 pins!";
+         AudioSource BackGroundMusic = GameObject.Find("BackGroundMusic").GetComponent<AudioSource>();
+    if (BackGroundMusic != null)
+    {
+        BackGroundMusic.Stop();
+    }
+
+    // Play a yay sound
+    AudioSource CheerupAudio = GameObject.Find("CheerupAudio").GetComponent<AudioSource>();
+    if (CheerupAudio != null)
+    {
+        CheerupAudio.Play();
+    }
+        feedBack.text = " YAY! YOU ARE THE CHAMPION ! ";
         feedBack.GetComponent<Animator>().SetTrigger("Show");
 
         StartCoroutine(Go_Next_GameAfterDelay());
@@ -146,7 +158,7 @@ public class Ball : MonoBehaviour
 
     private void Defeat()
     {
-        feedBack.text = "Defeat! You didn't knock down 10 pins!";
+        feedBack.text = "Defeat! Try HARDERRR!";
         feedBack.GetComponent<Animator>().SetTrigger("Show");
        
         StartCoroutine(RestartGameAfterDelay());

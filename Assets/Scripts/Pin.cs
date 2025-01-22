@@ -29,7 +29,7 @@ public class Pin : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Ball").GetComponent<Ball>().Falen_pin();
                 AudioSource.Play();
                 GameObject.FindGameObjectWithTag("Poing").GetComponent<TextMeshProUGUI>().text =
-                    $"Number of fallen pins: {ball.Point}";
+                    $" {ball.Point} PINS KNOCKED OUT ";
 
                 _done = true; // جلوگیری از حساب شدن دوباره این پین
 
