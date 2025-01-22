@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+
 using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
@@ -128,6 +129,19 @@ public class Ball : MonoBehaviour
 
         StartCoroutine(RestartGameAfterDelay());
         // در اینجا می‌توانید کد اضافی برای پیروزی اضافه کنید.
+    }
+
+
+    public void Check_Level()
+    {
+        if(SceneManager.GetActiveScene().name == "Level 1")
+        {
+            SceneManager.LoadScene("Level 2");
+        }
+        else
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 
     private void Defeat()
