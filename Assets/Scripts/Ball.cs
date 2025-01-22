@@ -122,6 +122,8 @@ public class Ball : MonoBehaviour
         _arrow.gameObject.SetActive(true);
     }
 
+    private bool HasPlayedCheerUpAudio = false; // Flag to track if the sound has played
+
     private void Victory()
     {
          AudioSource BackGroundMusic = GameObject.Find("BackGroundMusic").GetComponent<AudioSource>();
@@ -129,13 +131,18 @@ public class Ball : MonoBehaviour
     {
         BackGroundMusic.Stop();
     }
-
-    // Play a yay sound
-    AudioSource CheerupAudio = GameObject.Find("CheerupAudio").GetComponent<AudioSource>();
-    if (CheerupAudio != null)
+    // Playing The "YAY Sound / Cheer up audio " 
+    if (!HasPlayedCheerUpAudio)
     {
-        CheerupAudio.Play();
+    AudioSource CheerupAudio = GameObject.Find("CheerupAudio").GetComponent<AudioSource>();
+        if (CheerupAudio != null)
+        {
+            CheerupAudio.Play();
+            HasPlayedCheerUpAudio = true; // Set the flag to true so it doesn't play again
+        }
     }
+    
+    
         feedBack.text = " YAY! YOU ARE THE CHAMPION ! ";
         feedBack.GetComponent<Animator>().SetTrigger("Show");
 
