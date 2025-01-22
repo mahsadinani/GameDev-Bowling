@@ -110,7 +110,7 @@ public class Ball : MonoBehaviour
         rb.isKinematic = true;
         transform.position = _ballStartPosition;
         transform.rotation = Quaternion.identity;
-        rb.velocity = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
 
@@ -127,7 +127,7 @@ public class Ball : MonoBehaviour
         feedBack.text = "Victory! You knocked down 10 pins!";
         feedBack.GetComponent<Animator>().SetTrigger("Show");
 
-        StartCoroutine(RestartGameAfterDelay());
+        StartCoroutine(Go_Next_GameAfterDelay());
         // در اینجا می‌توانید کد اضافی برای پیروزی اضافه کنید.
     }
 
@@ -161,6 +161,12 @@ public class Ball : MonoBehaviour
     }
 
 
+    private IEnumerator Go_Next_GameAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(5);
+
+        Check_Level();
+    }
 
     public void Falen_pin()
     {
